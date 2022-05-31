@@ -27,14 +27,16 @@ let package = Package(
         "SidebarFeature",
         "AuthenticationFeature",
         "TcaHelpers",
-        "ProseCore",
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "ProseCoreLib", package: "ProseCore"),
       ]
     ),
     .target(name: "Assets"),
     .target(name: "PreviewAssets"),
     .target(name: "ProseUI", dependencies: ["Assets", "PreviewAssets", "SharedModels"]),
-    .target(name: "SharedModels", dependencies: ["ProseCore"]),
+    .target(name: "SharedModels", dependencies: [
+      .product(name: "ProseCoreLib", package: "ProseCore"),
+    ]),
     .target(
       name: "TcaHelpers",
       dependencies: [
@@ -49,7 +51,7 @@ let package = Package(
         "ProseUI",
         "PreviewAssets",
         "ConversationFeature",
-        "ProseCore",
+        .product(name: "ProseCoreLib", package: "ProseCore"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
@@ -65,8 +67,8 @@ let package = Package(
     .target(
       name: "AuthenticationFeature",
       dependencies: [
-        "ProseCore",
         "SharedModels",
+        .product(name: "ProseCoreLib", package: "ProseCore"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
