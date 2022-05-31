@@ -9,6 +9,10 @@ XCFRAMEWORK_PATH = /macos-arm64
 XCFRAMEWORK_NAME = "${SWIFT_LIB_NAME}"
 # XCFRAMEWORK_NAME = "${SWIFT_LIB_NAME}FFI"
 
+# Inpired by https://betterprogramming.pub/from-rust-to-swift-df9bde59b7cd
+# Other useful links:
+# - https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary
+
 all: interface framework
 
 interface:
