@@ -34,7 +34,7 @@ let package = Package(
     .target(name: "Assets"),
     .target(name: "PreviewAssets"),
     .target(name: "ProseUI", dependencies: ["Assets", "PreviewAssets", "SharedModels"]),
-    .target(name: "SharedModels"),
+    .target(name: "SharedModels", dependencies: ["ProseCore"]),
     .target(
       name: "TcaHelpers",
       dependencies: [

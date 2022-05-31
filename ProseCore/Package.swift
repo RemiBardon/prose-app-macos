@@ -2,15 +2,16 @@
 import PackageDescription
 
 let package = Package(
-  name: "ProseCore",
-  platforms: [.iOS(.v13)],
+  name: "prose-core",
+  platforms: [.macOS(.v12)],
   products: [
-    .library(name: "ProseCore", targets: ["ProseCore"]),
+    .library(name: "ProseCoreLib", targets: ["ProseCore"]),
   ],
   targets: [
     .binaryTarget(
       name: "ProseCore",
-      path: "ProseCore/ProseCore.xcframework"
+      path: "Artifacts/ProseCore.xcframework"
     ),
+    .testTarget(name: "ProseCoreTests", dependencies: ["ProseCore"])
   ]
 )
