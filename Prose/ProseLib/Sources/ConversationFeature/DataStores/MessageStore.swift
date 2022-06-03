@@ -6,6 +6,7 @@
 //  Copyright © 2022 Prose. All rights reserved.
 //
 
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/ConversationFeature/DataStores/MessageStore.swift
 import Foundation
 import OrderedCollections
 import SharedModels
@@ -103,12 +104,19 @@ public extension Message {
     var toMessageViewModel: MessageViewModel {
         let sender = UserStore.shared.user(for: self.senderId)
 
+=======
+import Persistence
+
+extension MessageEntity {
+    #warning("Unsafe")
+    var toMessageViewModel: MessageViewModel {
+>>>>>>> Stashed changes:Prose/Prose/Models/MessageStore.swift
         return MessageViewModel(
-            senderId: self.senderId,
-            senderName: sender?.displayName ?? "Unknown",
-            avatar: sender?.avatar ?? "",
-            content: self.content,
-            timestamp: self.timestamp
+            senderId: self.from!.jid!,
+            senderName: self.from!.displayName!,
+            avatar: self.from!.avatar!,
+            content: self.content!,
+            timestamp: self.timestamp!
         )
     }
 }

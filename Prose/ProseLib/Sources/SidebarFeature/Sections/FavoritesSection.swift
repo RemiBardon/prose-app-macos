@@ -10,6 +10,7 @@ import ComposableArchitecture
 import PreviewAssets
 import SwiftUI
 
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/SidebarFeature/Sections/FavoritesSection.swift
 private let l10n = L10n.Sidebar.Favorites.self
 
 // MARK: - View
@@ -29,6 +30,34 @@ struct FavoritesSection: View {
                 ForEach(items.state) { item in
                     NavigationLink(tag: item.id, selection: $route) {
                         NavigationDestinationView(selection: item.id)
+=======
+extension SidebarView {
+    
+    struct FavoritesSection: View {
+        
+        @Binding var selection: SidebarID?
+        
+        let items: [SidebarOption] = [
+            .init(
+                id: .chat(jid: PreviewJIDs.valerian.rawValue),
+                title: "Valerian",
+                image: PreviewImages.Avatars.valerian.rawValue,
+                count: 0
+            ),
+            .init(
+                id: .chat(jid: PreviewJIDs.alexandre.rawValue),
+                title: "Alexandre",
+                image: PreviewImages.Avatars.alexandre.rawValue,
+                count: 0
+            ),
+        ]
+        
+        var body: some View {
+            Section("sidebar_section_favorites".localized()) {
+                ForEach(items) { item in
+                    NavigationLink(tag: item.id, selection: $selection) {
+                        ContentView(selection: item.id)
+>>>>>>> Stashed changes:Prose/Prose/Components/Sidebar/Sections/Sidebar+FavoritesSection.swift
                     } label: {
                         ContactRow(
                             title: item.title,

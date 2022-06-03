@@ -9,8 +9,13 @@ import PreviewAssets
 import ProseUI
 import SwiftUI
 
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/ConversationFeature/Chat/MessageView.swift
 public struct MessageViewModel: Equatable {
     let senderId: String
+=======
+struct MessageViewModel {
+    let senderId: JID
+>>>>>>> Stashed changes:Prose/Prose/Components/Content/Chat/MessageView.swift
     let senderName: String
     let avatar: String
     let content: String
@@ -73,14 +78,14 @@ struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             MessageView(model: .init(
-                senderId: "id-valerian",
+                senderId: PreviewJIDs.valerian.rawValue,
                 senderName: "Valerian",
                 avatar: PreviewImages.Avatars.valerian.rawValue,
                 content: "Hello world, this is a message content!",
                 timestamp: .now - 10_000
             ))
             MessageView(model: .init(
-                senderId: "id-valerian",
+                senderId: PreviewJIDs.valerian.rawValue,
                 senderName: "Valerian",
                 avatar: PreviewImages.Avatars.valerian.rawValue,
                 content: Array(repeating: "Hello world, this is a message content!", count: 5).joined(separator: " "),
@@ -88,7 +93,7 @@ struct MessageView_Previews: PreviewProvider {
             ))
             .frame(width: 500)
             MessageView(model: .init(
-                senderId: "id-unknown",
+                senderId: "unknown@unknown.org",
                 senderName: "Unknown",
                 avatar: "",
                 content: "Unknown",
@@ -96,7 +101,7 @@ struct MessageView_Previews: PreviewProvider {
             ))
             .preferredColorScheme(.light)
             MessageView(model: .init(
-                senderId: "id-unknown",
+                senderId: "unknown@unknown.org",
                 senderName: "Unknown",
                 avatar: "",
                 content: "Unknown",

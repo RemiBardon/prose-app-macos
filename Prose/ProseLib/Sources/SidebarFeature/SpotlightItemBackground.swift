@@ -32,7 +32,7 @@ struct SpotlightItemBackground: ViewModifier {
 struct SpotlightItemBackground_Previews: PreviewProvider {
     static var previews: some View {
         MessageView(model: .init(
-            senderId: "id-valerian",
+            senderId: PreviewJIDs.valerian.rawValue,
             senderName: "Valerian",
             avatar: PreviewImages.Avatars.valerian.rawValue,
             content: "Message from Valerian",

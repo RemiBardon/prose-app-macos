@@ -21,13 +21,26 @@ struct NavigationDestinationView: View {
     let selection: Route?
 
     var body: some View {
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/SidebarFeature/NavigationDestinationView.swift
         content()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationTitle("")
+=======
+        ZStack {
+            Color.backgroundMessage
+            content()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationTitle("")
+        .toolbar {
+            Toolbar(selection: selection)
+        }
+>>>>>>> Stashed changes:Prose/Prose/Views/Common/ContentView.swift
     }
 
     @ViewBuilder
     private func content() -> some View {
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/SidebarFeature/NavigationDestinationView.swift
         switch self.selection {
         case let .chat(id):
             ConversationScreen(store: Store(
@@ -42,6 +55,13 @@ struct NavigationDestinationView: View {
             .groupBoxStyle(.spotlight)
         case .peopleAndGroups:
             AddressBookScreen()
+=======
+        switch selection {
+        case .chat(let jid):
+            ConversationScreen(jid: jid)
+        case .unread:
+            UnreadScreen()
+>>>>>>> Stashed changes:Prose/Prose/Views/Common/ContentView.swift
         case .none:
             Text("No selection 🤷")
         case let .some(value):
@@ -55,6 +75,10 @@ struct NavigationDestinationView: View {
 
 struct NavigationDestinationView_Previews: PreviewProvider {
     static var previews: some View {
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/SidebarFeature/NavigationDestinationView.swift
         NavigationDestinationView(selection: .chat(id: .person(id: "id-valerian")))
+=======
+        ContentView(selection: .chat(jid: PreviewJIDs.valerian.rawValue))
+>>>>>>> Stashed changes:Prose/Prose/Views/Common/ContentView.swift
     }
 }

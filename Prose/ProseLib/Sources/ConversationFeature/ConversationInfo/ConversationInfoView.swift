@@ -5,7 +5,11 @@
 //  Created by Valerian Saliou on 11/23/21.
 //
 
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/ConversationFeature/ConversationInfo/ConversationInfoView.swift
 import ComposableArchitecture
+=======
+import Persistence
+>>>>>>> Stashed changes:Prose/Prose/Views/Message/ConversationDetailsView.swift
 import SwiftUI
 
 // MARK: - View
@@ -31,6 +35,7 @@ struct ConversationInfoView: View {
             }
         }
     }
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/ConversationFeature/ConversationInfo/ConversationInfoView.swift
 
     typealias State = ConversationInfoState
     typealias Action = ConversationInfoAction
@@ -38,8 +43,42 @@ struct ConversationInfoView: View {
     let store: Store<State, Action>
     private var actions: ViewStore<Void, Action> { ViewStore(self.store.stateless) }
 
+=======
+    
+    @FetchRequest private var users: FetchedResults<UserEntity>
+    
+    var user: UserEntity? { users.first }
+    
+    init(jid: JID) {
+        self._users = FetchRequest<UserEntity>(
+            sortDescriptors: [],
+            predicate: UserEntity.jidPredicate(jid)
+        )
+    }
+    
+>>>>>>> Stashed changes:Prose/Prose/Views/Message/ConversationDetailsView.swift
     var body: some View {
+        if let user = self.user {
+            content(user: user)
+        }
+    }
+    
+    @ViewBuilder
+    private func content(user: UserEntity) -> some View {
         ScrollView(.vertical) {
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/ConversationFeature/ConversationInfo/ConversationInfoView.swift
+=======
+            VStack(spacing: 12) {
+                IdentitySection(
+                    avatar: user.avatar!,
+                    name: user.displayName!
+                )
+                QuickActionsSection()
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            
+>>>>>>> Stashed changes:Prose/Prose/Views/Message/ConversationDetailsView.swift
             VStack(spacing: 24) {
                 VStack(spacing: 12) {
                     WithViewStore(self.store) { viewStore in
@@ -115,9 +154,16 @@ internal struct ConversationInfoView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/ConversationFeature/ConversationInfo/ConversationInfoView.swift
         Preview()
             .previewDisplayName("Normal")
         Preview()
             .previewDisplayName("Placeholder")
+=======
+        ConversationDetailsView(
+            jid: PreviewJIDs.valerian.rawValue
+        )
+            .frame(width: 220.0, height: 720, alignment: .top)
+>>>>>>> Stashed changes:Prose/Prose/Views/Message/ConversationDetailsView.swift
     }
 }

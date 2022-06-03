@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChatRoom" representedClassName="ChatRoomEntity" parentEntity="Recipient" syncable="YES" codeGenerationType="class">
+        <attribute name="roomName" attributeType="String"/>
+    </entity>
+    <entity name="Message" representedClassName="MessageEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="content" attributeType="String"/>
+        <attribute name="isRead" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="from" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messages" inverseEntity="User"/>
+        <relationship name="to" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipient" inverseName="receivedMessages" inverseEntity="Recipient"/>
+    </entity>
+    <entity name="Recipient" representedClassName="RecipientEntity" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="isFavorited" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="jid" attributeType="String" regularExpressionString="[^@]+@[^@]+"/>
+        <relationship name="receivedMessages" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="to" inverseEntity="Message"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="jid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="User" representedClassName="UserEntity" parentEntity="Recipient" syncable="YES" codeGenerationType="class">
+        <attribute name="avatar" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="fullName" attributeType="String"/>
+        <relationship name="messages" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="from" inverseEntity="Message"/>
+    </entity>
+    <elements>
+        <element name="Message" positionX="-54" positionY="27" width="128" height="104"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Recipient" positionX="-27" positionY="90" width="128" height="74"/>
+        <element name="ChatRoom" positionX="-9" positionY="99" width="128" height="44"/>
+    </elements>
+</model>

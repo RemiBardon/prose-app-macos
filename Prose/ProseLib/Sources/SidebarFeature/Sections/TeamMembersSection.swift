@@ -10,6 +10,7 @@ import ComposableArchitecture
 import PreviewAssets
 import SwiftUI
 
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/SidebarFeature/Sections/TeamMembersSection.swift
 private let l10n = L10n.Sidebar.TeamMembers.self
 
 // MARK: - View
@@ -29,6 +30,40 @@ struct TeamMembersSection: View {
                 ForEach(items.state) { item in
                     NavigationLink(tag: item.id, selection: $route) {
                         NavigationDestinationView(selection: item.id)
+=======
+extension SidebarView {
+    
+    struct TeamMembersSection: View {
+        
+        @Binding var selection: SidebarID?
+        
+        let items: [SidebarOption] = [
+            .init(
+                id: .chat(jid: PreviewJIDs.antoine.rawValue),
+                title: "Antoine",
+                image: PreviewImages.Avatars.antoine.rawValue,
+                count: 0
+            ),
+            .init(
+                id: .chat(jid: PreviewJIDs.eliott.rawValue),
+                title: "Eliott",
+                image: PreviewImages.Avatars.eliott.rawValue,
+                count: 3
+            ),
+            .init(
+                id: .chat(jid: PreviewJIDs.camille.rawValue),
+                title: "Camille",
+                image: PreviewImages.Avatars.camille.rawValue,
+                count: 2
+            ),
+        ]
+        
+        var body: some View {
+            Section("sidebar_section_team_members".localized()) {
+                ForEach(items) { item in
+                    NavigationLink(tag: item.id, selection: $selection) {
+                        ContentView(selection: item.id)
+>>>>>>> Stashed changes:Prose/Prose/Components/Sidebar/Sections/Sidebar+TeamMembersSection.swift
                     } label: {
                         ContactRow(
                             title: item.title,

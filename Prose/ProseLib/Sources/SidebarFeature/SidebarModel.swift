@@ -10,8 +10,12 @@ import SharedModels
 
 public enum Route: Hashable {
     case unread, replies, directMessages, peopleAndGroups
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/SidebarFeature/SidebarModel.swift
     case chat(id: ChatID)
     case newMessage
+=======
+    case chat(jid: JID)
+>>>>>>> Stashed changes:Prose/Prose/Models/SidebarModel.swift
 }
 
 struct SidebarItem: Hashable, Identifiable {

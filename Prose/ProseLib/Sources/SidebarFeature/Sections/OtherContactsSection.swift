@@ -10,6 +10,7 @@ import ComposableArchitecture
 import PreviewAssets
 import SwiftUI
 
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/SidebarFeature/Sections/OtherContactsSection.swift
 private let l10n = L10n.Sidebar.OtherContacts.self
 
 // MARK: - View
@@ -29,6 +30,28 @@ struct OtherContactsSection: View {
                 ForEach(items.state) { item in
                     NavigationLink(tag: item.id, selection: $route) {
                         NavigationDestinationView(selection: item.id)
+=======
+extension SidebarView {
+    
+    struct OtherContactsSection: View {
+        
+        @Binding var selection: SidebarID?
+        
+        let items: [SidebarOption] = [
+            .init(
+                id: .chat(jid: PreviewJIDs.baptiste.rawValue),
+                title: "Baptiste",
+                image: PreviewImages.Avatars.baptiste.rawValue,
+                count: 0
+            ),
+        ]
+        
+        var body: some View {
+            Section("sidebar_section_other_contacts".localized()) {
+                ForEach(items) { item in
+                    NavigationLink(tag: item.id, selection: $selection) {
+                        ContentView(selection: item.id)
+>>>>>>> Stashed changes:Prose/Prose/Components/Sidebar/Sections/Sidebar+OtherContactsSection.swift
                     } label: {
                         ContactRow(
                             title: item.title,

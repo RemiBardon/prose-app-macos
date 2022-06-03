@@ -95,7 +95,7 @@ struct Chat_Previews: PreviewProvider {
         }
         .map {
             MessageViewModel(
-                senderId: "id-valerian",
+                senderId: PreviewJIDs.valerian.rawValue,
                 senderName: "Valerian",
                 avatar: PreviewImages.Avatars.valerian.rawValue,
                 content: $0.1,

@@ -10,6 +10,7 @@ import ComposableArchitecture
 import SharedModels
 import SwiftUI
 
+<<<<<<< Updated upstream:Prose/ProseLib/Sources/SidebarFeature/Sections/GroupsSection.swift
 private let l10n = L10n.Sidebar.Groups.self
 
 // MARK: - View
@@ -29,6 +30,46 @@ struct GroupsSection: View {
                 ForEach(items.state) { item in
                     NavigationLink(tag: item.id, selection: $route) {
                         NavigationDestinationView(selection: item.id)
+=======
+extension SidebarView {
+    
+    struct GroupsSection: View {
+        
+        @Binding var selection: SidebarID?
+        
+        let items: [SidebarOption] = [
+            .init(
+                id: .chat(jid: "group-bugs"),
+                title: "bugs",
+                image: Icon.group.rawValue,
+                count: 0
+            ),
+            .init(
+                id: .chat(jid: "group-constellation"),
+                title: "constellation",
+                image: Icon.group.rawValue,
+                count: 7
+            ),
+            .init(
+                id: .chat(jid: "group-general"),
+                title: "general",
+                image: Icon.group.rawValue,
+                count: 0
+            ),
+            .init(
+                id: .chat(jid: "group-support"),
+                title: "support",
+                image: Icon.group.rawValue,
+                count: 0
+            ),
+        ]
+        
+        var body: some View {
+            Section("sidebar_section_groups".localized()) {
+                ForEach(items) { item in
+                    NavigationLink(tag: item.id, selection: $selection) {
+                        ContentView(selection: item.id)
+>>>>>>> Stashed changes:Prose/Prose/Components/Sidebar/Sections/Sidebar+GroupsSection.swift
                     } label: {
                         NavigationRow(
                             title: item.title,
